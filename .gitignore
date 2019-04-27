@@ -65,3 +65,6 @@ typings/
 
 # mongo data
 data/db
+
+# babel build dir
+build/
