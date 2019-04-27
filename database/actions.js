@@ -9,7 +9,14 @@ export const insertTask = (task) => {
 }
 
 export const updateTask = (id,task) => {
-    return Task.update(task,{where:{id}})
+    return Task
+        .update(task,{where:{id}})
+        .then(result => {
+            if(result[0] === 0) {
+                throw new Error("Task does not exist")
+            }
+            return Task.findOne({where:{id}})
+        })
 }
 
 export const deleteTask = (id) => {

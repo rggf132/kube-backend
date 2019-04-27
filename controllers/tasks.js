@@ -18,8 +18,8 @@ router.post('/', (req,res) => {
     const task = req.body
 
     insertTask(task)
-        .then(result => {
-            res.send('Created task')
+        .then(task => {
+            res.send(task)
         })
         .catch(error => {
             console.log(error)
@@ -32,8 +32,8 @@ router.put('/:id', (req,res) => {
     const task = req.body
 
     updateTask(id,task)
-        .then(result => {
-            res.send(`Updated task`)
+        .then(task => {
+            res.send(task)
         })
         .catch(error => {
             console.log(error)
@@ -46,7 +46,10 @@ router.delete('/:id', (req,res) => {
 
     deleteTask(id)
         .then(result => {
-            res.send('Deleted task')
+            if(result===0) {
+                return res.status(404).send('Task does not exist')
+            }
+            res.send('Task deleted')
         })
         .error(error => {
             console.log(error)
