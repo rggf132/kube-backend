@@ -37,7 +37,7 @@ router.put('/:id', (req,res) => {
         })
         .catch(error => {
             console.log(error)
-            res.status(500).send('Error creating task')
+            res.status(500).send('Error updating task')
         })
 })
 
