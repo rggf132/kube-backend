@@ -12,6 +12,11 @@
 ./run_mongo.sh
 ```
 
+## Set up Jenkins in Kubernetes
+To achieve full CI/CD spin up an instance of Jenkins in Google Cloud, this can be used to run tests and deploy the latest `master` branch code automatically
+
+https://cloud.google.com/solutions/jenkins-on-kubernetes-engine-tutorial
+
 ## API Documentation
 
 ### GET /auth/facebook
