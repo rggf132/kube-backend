@@ -11,6 +11,52 @@
 ```
 ./run_mongo.sh
 ```
+
+## API Documentation
+
+### GET /auth/facebook
+This redirects the user to facebook where they can sign in, on completion they will be re-directed to /auth/facebook/callback
+
+### GET /tasks
+This endpoint returns all of the users tasks
+```json
+{
+    "tasks":[
+        {
+            "id":"961bfa41-f1db-4269-84ee-67d9b8c0d6d2",
+            "title":"Do washing",
+            "description":"Put washing into machine",
+            "status":"in_progress",
+            "insertDate":"2008-09-15T15:53:00"
+        }
+    ]
+}
+```
+
+### POST /tasks
+This endpoint allows a user to create a new task
+```json
+{
+    "title":"Light the fire",
+    "description":"Turn on the gas and light the spark"
+}
+```
+
+### PUT /tasks/:id
+This endpoint allows a user to update the contents of a task, or mark status.
+
+The callee doesn't have to pass all fields, only those they wish to update.
+```json
+{
+    "title":"This is a new title",
+    "description":"This is a new description",
+    "status":"in_progress"
+}
+```
+
+### DELETE /tasks/:id
+This endpoint allows the user to delete a task.
+
 ## Set up on Google Cloud Platform
 
 ### Create Kubernetes Cluster
