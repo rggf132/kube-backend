@@ -16,3 +16,4 @@ steps:
  env:
  - 'CLOUDSDK_COMPUTE_ZONE=europe-west2-a'
  - 'CLOUDSDK_CONTAINER_CLUSTER=standard-cluster-1'
+ 
