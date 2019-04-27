@@ -20,6 +20,7 @@
   "homepage": "https://github.com/rggf132/kube-backend#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "mysql2": "^1.6.5",
     "sequelize": "^5.7.6"
