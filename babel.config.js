@@ -7,6 +7,6 @@ const presets = [
     ],
 ];
 
-const ignore = [/node_modules\/(?!lodash-es)/]
+const ignore = ["node_modules","build"]
 
 module.exports = { presets, ignore };

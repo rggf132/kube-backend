@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec babel-node index",
-    "prod": "./node_modules/.bin/babel . --out-dir build && cd build && node index"
+    "prod:start": "cd build && node index",
+    "prod:build": "./node_modules/.bin/babel . --out-dir build"
   },
   "repository": {
     "type": "git",
