@@ -46,7 +46,7 @@ router.delete('/:id', (req,res) => {
 
     deleteTask(id)
         .then(result => {
-            console.log('Deleted task')
+            res.send('Deleted task')
         })
         .error(error => {
             console.log(error)
