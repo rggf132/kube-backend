@@ -6,8 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec babel-node index",
-    "prod:start": "cd build && node index",
-    "prod:build": "./node_modules/.bin/babel . --out-dir build"
+    "prod:build": "./node_modules/.bin/babel . --out-dir build",
+    "prod:run": "cd build && node index",
+    "docker:build": "docker build . -t kube-backend",
+    "docker:run": "docker run -p 3000:3000 kube-backend"
   },
   "repository": {
     "type": "git",
