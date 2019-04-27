@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/rggf132/kube-backend#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.7.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",

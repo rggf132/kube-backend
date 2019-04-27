@@ -113,6 +113,32 @@ To check the status of the externalisation and get the external IP address, run 
 kubectl get services
 ```
 
+### Set up the database
+
+#### Spin up
+- On Google Cloud Platform go to SQL > Create
+- Set up the root username and password
+
+#### Whitelist IP
+- Go to Connection
+- Add a new network (ip) allowed to connect externally
+- Input your own IP address
+
+#### Create non-root user
+- Once span up go to Users > Create user account
+- Create a user account for the backend
+- Go into the code database>connector.js and input SQL public IP, username and password
+
+#### Create database (within database)
+- Go to Databases > Create Database
+- Create a database 'taskApp'
+
+#### Test connection
+Run the following command, ensure the db connector syncs
+```
+babel-node database/connector.js
+```
+
 ## Debug on Google Cloud Platform
 
 ### Get the Pod name
