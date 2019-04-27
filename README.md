@@ -100,7 +100,7 @@ To deploy the backend to the cluster run this command
 kubectl run kube-backend --image=gcr.io/erudite-variety-155215/kube-backend:1.0.0 --port 3000
 ```
 
-### Expose the Docker Image
+### Expose Kubernetes deployment
 In order to connect to your deployment, it needs to be externalised to the internet
 
 ```$xslt
@@ -111,6 +111,11 @@ To check the status of the externalisation and get the external IP address, run 
 
 ```$xslt
 kubectl get services
+```
+
+### Update Kubernetes Deployment
+```
+kubectl set image deployment kube-backend kube-backend=gcr.io/erudite-variety-155215/kube-backend:1.0.2
 ```
 
 ### Set up the database
