@@ -9,29 +9,49 @@ router.get('/', (req, res) => {
             res.send(tasks)
         })
         .catch(error => {
-            res.status(500).send({message:error.message})
+            console.log(error)
+            res.status(500).send('Error getting tasks')
         })
 })
 
 router.post('/', (req,res) => {
     const task = req.body
-    console.log(task)
 
-    res.send('Created task')
+    insertTask(task)
+        .then(result => {
+            res.send('Created task')
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).send('Error creating task')
+        })
 })
 
 router.put('/:id', (req,res) => {
     const id = req.params.id
     const task = req.body
-    console.log(task)
 
-    res.send(`Updated task ${id}`)
+    updateTask(id,task)
+        .then(result => {
+            res.send(`Updated task`)
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).send('Error creating task')
+        })
 })
 
 router.delete('/:id', (req,res) => {
     const id = req.params.id
 
-    res.send(`Deleted task ${id}`)
+    deleteTask(id)
+        .then(result => {
+            console.log('Deleted task')
+        })
+        .error(error => {
+            console.log(error)
+            res.status(500).send('Error deleting task')
+        })
 })
 
 module.exports = router;
