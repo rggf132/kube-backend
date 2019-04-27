@@ -17,6 +17,31 @@ Follow this article
 
 https://medium.freecodecamp.org/continuous-deployment-for-node-js-on-google-cloud-platform-751a035a28d5
 
+### Put the code on GitHub
+The code needs to be in a location that Google Cloud build can access it. As with this repository that can be GitHub.
+
+### Enable Cloud Build
+In your Google Cloud Project enable these APIs:
+- Cloud Build API
+- Kubernetes Engine API
+- Go into IAM & Admin > IAM > Roles > Cloud Build Service Account
+- Give this user `Kubernetes Engine Admin` permission
+
+### Create a cloudbuild.yaml
+As in this project we configure it to
+- npm install
+- npm test
+- docker build
+- docker push
+
+### Create a build trigger
+- Go to Cloud Build > Triggers
+- Create Trigger
+- Give `Google Cloud Build` from the GitHub market place access to your GitHub account
+
+### Push the code
+This should trigger a build in Cloud Build > History
+
 ## API Documentation
 
 ### GET /auth/facebook
