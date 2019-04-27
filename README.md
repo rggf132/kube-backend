@@ -59,6 +59,17 @@ This endpoint allows the user to delete a task.
 
 ## Set up on Google Cloud Platform
 
+## Install Google Cloud SDK
+Following this guide
+
+https://cloud.google.com/sdk/docs/quickstart-macos
+
+## Configure Google Cloud SDK with your GCP Project
+
+Following this guide
+
+https://cloud.google.com/kubernetes-engine/docs/quickstart
+
 ### Create Kubernetes Cluster
 The Kubernetes Cluster is a set of VMs running the Kubernetes software, applications deployed to Kuberentes will be scheduled across these nodes.
 
