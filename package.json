@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "babel-node index --dbuser root --dbpass ke7zkmLIm8DchOPA --dbhost 35.234.141.205",
     "cloud": "babel-node index --dbuser root --dbpass ke7zkmLIm8DchOPA --dbhost 10.41.48.3"
   },
@@ -31,6 +31,8 @@
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.4.4",
     "github-current-user": "^2.5.0",
-    "nodemon": "^1.18.11"
+    "jest": "^24.7.1",
+    "nodemon": "^1.18.11",
+    "supertest": "^4.0.2"
   }
 }
