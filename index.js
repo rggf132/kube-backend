@@ -1,13 +1,17 @@
 import express from 'express'
-
-//Routes
+import bodyParser from 'body-parser'
 import tasksRoute from './controllers/tasks'
 
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => res.send('Hello World!'))
+//Middleware
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
+//Endpoints
+app.get('/', (req, res) => res.send('Hello World!'))
 app.use('/tasks', tasksRoute);
 
+//Expose
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

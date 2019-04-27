@@ -14,11 +14,16 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req,res) => {
+    const task = req.body
+    console.log(task)
 
+    res.send('Created task')
 })
 
 router.put('/:id', (req,res) => {
     const id = req.params.id
+    const task = req.body
+    console.log(task)
 
     res.send(`Updated task ${id}`)
 })
