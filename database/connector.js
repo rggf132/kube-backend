@@ -1,5 +1,12 @@
+import {getArgument} from "./arguments";
+
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('mysql://root:ke7zkmLIm8DchOPA@35.234.141.205/taskApp');
+
+const dbuser = getArgument('dbuser')
+const dbpass = getArgument('dbpass')
+const dbhost = getArgument('dbhost')
+
+const sequelize = new Sequelize(`mysql://${dbuser}:${dbpass}@${dbhost}/taskApp`);
 
 const Task = sequelize.define('task',{
     title: Sequelize.STRING,

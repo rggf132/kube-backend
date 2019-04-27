@@ -5,11 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "babel-node index",
-    "prod:build": "./node_modules/.bin/babel . --out-dir build",
-    "prod:run": "cd build && node index",
-    "docker:build": "docker build . -t kube-backend",
-    "docker:run": "docker run -p 3000:3000 kube-backend"
+    "dev": "babel-node index --dbuser root --dbpass ke7zkmLIm8DchOPA --dbhost 35.234.141.205",
+    "cloud": "babel-node index --dbuser root --dbpass ke7zkmLIm8DchOPA --dbhost 10.41.48.3"
   },
   "repository": {
     "type": "git",
