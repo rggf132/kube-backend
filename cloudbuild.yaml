@@ -1,3 +1,6 @@
+substitutions:
+    PROJECT_ID: erudite-variety-155215
+    REVISION_ID: 1.0.4
 steps:
 - name: 'gcr.io/cloud-builders/npm'
   args: ['install']
@@ -16,4 +19,3 @@ steps:
  env:
  - 'CLOUDSDK_COMPUTE_ZONE=europe-west2-a'
  - 'CLOUDSDK_CONTAINER_CLUSTER=standard-cluster-1'
- 
