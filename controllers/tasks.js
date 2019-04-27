@@ -17,12 +17,16 @@ router.post('/', (req,res) => {
 
 })
 
-router.put('/', (req,res) => {
+router.put('/:id', (req,res) => {
+    const id = req.params.id
 
+    res.send(`Updated task ${id}`)
 })
 
-router.delete('/', (req,res) => {
+router.delete('/:id', (req,res) => {
+    const id = req.params.id
 
+    res.send(`Deleted task ${id}`)
 })
 
 module.exports = router;
