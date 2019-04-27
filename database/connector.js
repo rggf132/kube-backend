@@ -17,3 +17,5 @@ sequelize.sync()
         console.log(error)
         console.log("Error syncing database")
     })
+
+export { Task }
