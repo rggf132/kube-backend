@@ -34,5 +34,10 @@
     "jest": "^24.7.1",
     "nodemon": "^1.18.11",
     "supertest": "^4.0.2"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/node_modules/regenerator-runtime/runtime"
+    ]
   }
 }
