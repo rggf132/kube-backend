@@ -202,4 +202,3 @@ kubectl logs <pod-name>
 ## Configuring Google Authentication with Passport.js
 
 It was integrated following these steps http://www.passportjs.org/docs/google/
-
