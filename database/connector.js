@@ -8,10 +8,17 @@ const dbhost = getArgument('dbhost')
 
 const sequelize = new Sequelize(`mysql://${dbuser}:${dbpass}@${dbhost}/taskApp`);
 
+//Task Model
 const Task = sequelize.define('task',{
     title: Sequelize.STRING,
     description: Sequelize.STRING,
     status: Sequelize.STRING
+})
+
+//User Model
+const User = sequelize.define('user',{
+    email: Sequelize.STRING,
+    password: Sequelize.STRING
 })
 
 sequelize.sync()
@@ -23,4 +30,4 @@ sequelize.sync()
         console.log("Error syncing database")
     })
 
-export { Task }
+export { Task, User }
