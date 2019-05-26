@@ -7,7 +7,7 @@ import authRoute from "./controllers/auth";
 // import passport and passport-jwt modules
 var passport = require("passport"),
   LocalStrategy = require("passport-local").Strategy;
-import { setupPassport } from "./services/passport";
+import { setupPassport } from "./passport/passport-local-strategy";
 
 const app = express();
 const port = 3000;
