@@ -19,25 +19,12 @@ app.use(bodyParser.json());
 
 app.use(passport.initialize());
 app.use(passport.session());
-setupPassport(passport, LocalStrategy);
-
-app.get("/success", (req, res) =>
-  res.send("Welcome " + req.query.email + "!!")
-);
-app.get("/error", (req, res) => res.send("error logging in" + req.query.email));
+setupPassport(app, passport, LocalStrategy);
 
 //Endpoints
 app.get("/", (req, res) => res.send("Hello World!"));
 app.use("/tasks", tasksRoute);
 app.use("/auth", authRoute);
-
-app.post(
-  "/login",
-  passport.authenticate("local", { failureRedirect: "/error" }),
-  function(req, res) {
-    res.redirect("/success?email=" + req.user.email);
-  }
-);
 
 //Expose
 export default app.listen(port, () =>

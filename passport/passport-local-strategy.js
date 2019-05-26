@@ -1,6 +1,7 @@
+import express from "express";
 import { loginUser } from "../database/actions";
 
-export const setupPassport = (passport, LocalStrategy) => {
+export const setupPassport = (app, passport, LocalStrategy) => {
   passport.serializeUser(function(user, cb) {
     cb(null, user.id);
   });
@@ -38,5 +39,20 @@ export const setupPassport = (passport, LocalStrategy) => {
           });
       }
     )
+  );
+
+  app.get("/success", (req, res) =>
+    res.send("Welcome " + req.query.email + "!!")
+  );
+  app.get("/error", (req, res) =>
+    res.send("error logging in" + req.query.email)
+  );
+
+  app.post(
+    "/login",
+    passport.authenticate("local", { failureRedirect: "/error" }),
+    function(req, res) {
+      res.redirect("/success?email=" + req.user.email);
+    }
   );
 };
