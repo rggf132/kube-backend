@@ -3,9 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import tasksRoute from "./controllers/tasks";
 
-import authRoute from "./controllers/auth";
-// import passport and passport-jwt modules
-var passport = require("passport"),
+const passport = require("passport"),
   LocalStrategy = require("passport-local").Strategy;
 import { setupPassportLocal } from "./passport/passport-local-strategy";
 
@@ -24,7 +22,6 @@ setupPassportLocal(app, passport, LocalStrategy);
 //Endpoints
 app.get("/", (req, res) => res.send("Hello World!"));
 app.use("/tasks", tasksRoute);
-app.use("/auth", authRoute);
 
 //Expose
 export default app.listen(port, () =>
