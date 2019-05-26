@@ -1,5 +1,6 @@
 import express from "express";
 import { createUser, getAllUsers, loginUser } from "../database/actions";
+import { User } from "../database/connector";
 
 export const setupPassportLocal = (app, passport, LocalStrategy) => {
   passport.serializeUser(function(user, cb) {
@@ -7,9 +8,13 @@ export const setupPassportLocal = (app, passport, LocalStrategy) => {
   });
 
   passport.deserializeUser(function(id, cb) {
-    User.findById(id, function(err, user) {
-      cb(err, user);
-    });
+    User.findOne({ where: { id } })
+      .then(user => {
+        cb(null, user);
+      })
+      .catch(error => {
+        cb(error);
+      });
   });
 
   passport.use(
