@@ -1,7 +1,7 @@
 import express from "express";
-import { loginUser } from "../database/actions";
+import { createUser, getAllUsers, loginUser } from "../database/actions";
 
-export const setupPassport = (app, passport, LocalStrategy) => {
+export const setupPassportLocal = (app, passport, LocalStrategy) => {
   passport.serializeUser(function(user, cb) {
     cb(null, user.id);
   });
@@ -48,6 +48,7 @@ export const setupPassport = (app, passport, LocalStrategy) => {
     res.send("error logging in" + req.query.email)
   );
 
+  // login route
   app.post(
     "/login",
     passport.authenticate("local", { failureRedirect: "/error" }),
@@ -55,4 +56,29 @@ export const setupPassport = (app, passport, LocalStrategy) => {
       res.redirect("/success?email=" + req.user.email);
     }
   );
+
+  // get all users
+  app.get("/users", (req, res) => {
+    getAllUsers()
+      .then(user => {
+        res.send(user);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send("Error getting users");
+      });
+  });
+
+  // register route
+  app.post("/register", (req, res, next) => {
+    const { email, password } = req.body;
+    createUser({ email, password })
+      .then(user => {
+        res.json({ user, msg: "account created successfully" });
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send("Error creating user");
+      });
+  });
 };

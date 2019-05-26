@@ -7,7 +7,7 @@ import authRoute from "./controllers/auth";
 // import passport and passport-jwt modules
 var passport = require("passport"),
   LocalStrategy = require("passport-local").Strategy;
-import { setupPassport } from "./passport/passport-local-strategy";
+import { setupPassportLocal } from "./passport/passport-local-strategy";
 
 const app = express();
 const port = 3000;
@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 app.use(passport.initialize());
 app.use(passport.session());
-setupPassport(app, passport, LocalStrategy);
+setupPassportLocal(app, passport, LocalStrategy);
 
 //Endpoints
 app.get("/", (req, res) => res.send("Hello World!"));
