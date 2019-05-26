@@ -68,3 +68,6 @@ data/db
 
 # babel build dir
 build/
+
+# ignore session cookies
+sessions/
