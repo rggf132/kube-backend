@@ -40,25 +40,25 @@ export const setupPassportLocal = (app, passport, LocalStrategy) => {
       }
     )
   );
+  const router = express.Router();
 
-  app.get("/success", (req, res) =>
+  router.get("/success", (req, res) =>
     res.send("Welcome " + req.query.email + "!!")
   );
-  app.get("/error", (req, res) =>
+  router.get("/error", (req, res) =>
     res.send("error logging in" + req.query.email)
   );
 
-  // login route
-  app.post(
+  router.post(
     "/login",
-    passport.authenticate("local", { failureRedirect: "/error" }),
+    passport.authenticate("local", { failureRedirect: "/auth/local/error" }),
     function(req, res) {
-      res.redirect("/success?email=" + req.user.email);
+      res.redirect("/auth/local/success?email=" + req.user.email);
     }
   );
 
   // get all users
-  app.get("/users", (req, res) => {
+  router.get("/users", (req, res) => {
     getAllUsers()
       .then(user => {
         res.send(user);
@@ -70,7 +70,7 @@ export const setupPassportLocal = (app, passport, LocalStrategy) => {
   });
 
   // register route
-  app.post("/register", (req, res, next) => {
+  router.post("/register", (req, res, next) => {
     const { email, password } = req.body;
     createUser({ email, password })
       .then(user => {
@@ -81,4 +81,6 @@ export const setupPassportLocal = (app, passport, LocalStrategy) => {
         res.status(500).send("Error creating user");
       });
   });
+
+  app.use("/auth/local", router);
 };
