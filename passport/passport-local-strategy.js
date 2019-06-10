@@ -92,7 +92,7 @@ export const setupPassportLocal = (app, passport, LocalStrategy) => {
   });
 
   // register route
-  router.post("/register", isAuthenticated, (req, res, next) => {
+  router.post("/register", (req, res, next) => {
     const { email, password } = req.body;
     createUser({ email, password })
       .then(user => {
@@ -104,5 +104,5 @@ export const setupPassportLocal = (app, passport, LocalStrategy) => {
       });
   });
 
-  app.use("/auth/local", router);
+  app.use("/api/auth/local", router);
 };

@@ -55,7 +55,7 @@ setupPassportLocal(app, passport, LocalStrategy);
 
 //Endpoints
 
-app.use("/tasks", isAuthenticated, tasksRoute);
+app.use("/api/tasks", isAuthenticated, tasksRoute);
 
 //Expose
 export default app.listen(port, () =>
